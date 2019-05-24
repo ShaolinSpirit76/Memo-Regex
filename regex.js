@@ -38,8 +38,8 @@ Pour le numéro de téléphone, en indiquant le +33 dans votre label, remplaçan
 // 1) Uniquement les chiffre collés.
 regexPhone = /^[0-9]{9}$/;
 
-// 2) Avec la possibilité de séparer par un point, un espace ou un tiret.
-regexPhone = /^[0-9]{9}|[\-0-9]{13}|[ 0-9]{13}|[\.0-9]{13}$/;
+// 2) Avec la possibilité de séparer par un point, un espace ou un tiret, ou en les collant, ou en ajoutant "+33" à la place du zéro.
+regexPhone = /^([0][1-9]([-. ]?[0-9]{2}){4})|([+][3][3][1-9]([-. ]?[0-9]{2}){4})$/;
 
 
 Pour récupérer une adresse postale :
