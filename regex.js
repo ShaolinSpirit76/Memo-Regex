@@ -54,8 +54,12 @@ regexStreetNumber = /^[0-9]+$/;
 regexPostal = /^[0-9]{5}|[9]{1}[7]{1}[1-6]{1}$/;
 
 // 4) La première regexName fonctionne très bien pour le nom de la ville.
-regexName = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ]{0,17}$/;
+regexCity = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ]{0,17}$/;
 
+Pour le login/identifiant :
+// Sur la base de la regexName, on rajoute l'utilisation des chiffres et des caractères spéciaux. Simplement on limite la taille à 2 fois 15 caractères max.
+
+regexLogin = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/;
 
 Pour un mot de passe secure :
 
