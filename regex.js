@@ -5,13 +5,13 @@ Pour les nom :
 // 1) Si vous différienciez nom et prénom dans 2 input différents, cette régex conviendra parfaitement.
 // Elle accepte un nom simple ou composé, compris entre 2 et 17 caractère, reliés par un espace,
 // un tiret ou une apostrophe (pour les irlandais ;)
-regexName = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ]{0,17}$/;
+regexName = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç]{0,17}$/;
 
 // 2) Si vous voulez que l'on mette nom et prénom dans une seule input, il faudra utiliser cette regex.
 // Elle accepte les prénoms composés + particule + nom composé.
 // Ex : Marie-Claire des Champs-Vallon
 // Et tout ce qui est plus petit.
-regexFirstNameLastName = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{0,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{0,17}[ ]?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{0,3}[ ]?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{0,17}$/
+regexFirstNameLastName = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{0,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{0,17}[ ]?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{0,3}[ ]?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{0,17}$/
 
 
 Pour les adresses mails :
@@ -50,24 +50,24 @@ regexPhone = /^[0][1-9]([-. ]?)(([0-9]{2})\1([0-9]{2}))(\1([0-9]{2})){2}|[+]33[0
 Pour récupérer une adresse postale :
 
 // 1) Le nom de la rue :
-regexStreet = /^(avenue|Avenue|AVENUE|rue|Rue|RUE|Boulevard|BOULEVARD|boulevard|Impasse|IMPASSE|impasse|Allée|ALLEE|allée|hameau|Hameau|HAMEAU|Chemin|chemin|CHEMIN|lieu-dit|Lieu-dit|LIEU-DIT|lieu-Dit|Lieu-Dit)[- ][A-Za-zéèàâêŷûîôäëïöüÿù]+([- ]?[A-Za-zéèàâêŷûîôäëïöüÿù]{0,17}){0,3}$/;
+regexStreet = /^(avenue|Avenue|AVENUE|rue|Rue|RUE|Boulevard|BOULEVARD|boulevard|Impasse|IMPASSE|impasse|Allée|ALLEE|allée|hameau|Hameau|HAMEAU|Chemin|chemin|CHEMIN|lieu-dit|Lieu-dit|LIEU-DIT|lieu-Dit|Lieu-Dit)[- ][A-Za-zéèàâêŷûîôäëïöüÿùç]+([- ]?[A-Za-zéèàâêŷûîôäëïöüÿùç]{0,17}){0,3}$/;
 
 // 2) Le numéro de la rue :
 regexStreetNumber = /^([1-9]|[1-9][0-9]|[1-9][0-9]{2}|1[0-9]{3})[A|a|B|b]?[ ]?(bis)?$/;
 
 // 3) numéro de rue + nom de rue :
-regexAddress = /^([1-9]|[1-9][0-9]|[1-9][0-9]{2}|1[0-9]{3})[A|a|B|b]?[ ]?(bis)?[- ](avenue|Avenue|AVENUE|rue|Rue|RUE|Boulevard|BOULEVARD|boulevard|Impasse|IMPASSE|impasse|Allée|ALLEE|allée|hameau|Hameau|HAMEAU|Chemin|chemin|CHEMIN|lieu-dit|Lieu-dit|LIEU-DIT|lieu-Dit|Lieu-Dit)[- ][A-Za-zéèàâêŷûîôäëïöüÿù]+([- ]?[A-Za-zéèàâêŷûîôäëïöüÿù]{0,17}){0,3}$/;
+regexAddress = /^([1-9]|[1-9][0-9]|[1-9][0-9]{2}|1[0-9]{3})[A|a|B|b]?[ ]?(bis)?[- ](avenue|Avenue|AVENUE|rue|Rue|RUE|Boulevard|BOULEVARD|boulevard|Impasse|IMPASSE|impasse|Allée|ALLEE|allée|hameau|Hameau|HAMEAU|Chemin|chemin|CHEMIN|lieu-dit|Lieu-dit|LIEU-DIT|lieu-Dit|Lieu-Dit)[- ][A-Za-zéèàâêŷûîôäëïöüÿùç]+([- ]?[A-Za-zéèàâêŷûîôäëïöüÿùç]{0,17}){0,3}$/;
 
 // 4) Le code postal correspondant au territoire français (métropole + DOM-TOM)
 regexPostal = /^[0-9]{5}|[9]{1}[7]{1}[1-6]{1}$/;
 
 // 5) La première regexName fonctionne très bien pour le nom de la ville.
-regexCity = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ]{0,17}$/;
+regexCity = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç]{0,17}$/;
 
 Pour le login/identifiant :
 // Sur la base de la regexName, on rajoute l'utilisation des chiffres et des caractères spéciaux. Simplement on limite la taille à 2 fois 15 caractères max.
 
-regexLogin = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/;
+regexLogin = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ0ç-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ0ç-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/;
 
 Pour un mot de passe secure :
 
