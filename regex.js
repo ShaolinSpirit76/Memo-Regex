@@ -1,5 +1,9 @@
 Mémo regex
 
+Pour la civilité :
+        
+regexGender = /^(Monsieur|Madame|Autre)$/;
+
 Pour les nom :
 
 // 1) Si vous différienciez nom et prénom dans 2 input différents, cette régex conviendra parfaitement.
@@ -35,7 +39,7 @@ var frenchDate = event.toLocaleDateString("fr-FR", options);
 Pour les calendrier :
 
 // Prends en compte les années bisextiles.
-regexCalendar : ^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\g1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\g2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\g3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\g4(?:(?:1[6-9]|[2-9]\d)?\d{2})$
+regexCalendar = ^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\g1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\g2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\g3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\g4(?:(?:1[6-9]|[2-9]\d)?\d{2})$
 
 
 Pour le numéro de téléphone, en indiquant le +33 dans votre label, remplaçant ainsi le premier 0 (numéro international) :
@@ -44,7 +48,7 @@ Pour le numéro de téléphone, en indiquant le +33 dans votre label, remplaçan
 regexPhone = /^[0-9]{9}$/;
 
 // 2) Avec la possibilité de séparer par un point, un espace ou un tiret, ou en les collant, ou en ajoutant "+33" à la place du zéro.
-regexPhone = /^[0][1-9]([-. ]?)(([0-9]{2})\1([0-9]{2}))(\1([0-9]{2})){2}|[+]33[0-9]([-. ]?)(([0-9]{2})\7([0-9]{2}))(\7([0-9]{2})){2}$/;
+regexPhone = /^[+][3]{2}[1-9]([-. ]?)(([0-9]{2})\g1([0-9]{2}))(\g1([0-9]{2})){2}|[0][1-9]([-. ]?)(([0-9]{2})\g7([0-9]{2}))(\g7([0-9]{2})){2}$/;
 
 
 Pour récupérer une adresse postale :
@@ -59,10 +63,10 @@ regexStreetNumber = /^([1-9]|[1-9][0-9]|[1-9][0-9]{2}|1[0-9]{3})[A|a|B|b]?[ ]?(b
 regexAddress = /^([1-9]|[1-9][0-9]|[1-9][0-9]{2}|1[0-9]{3})[A|a|B|b]?[ ]?(bis)?[- ](avenue|Avenue|AVENUE|rue|Rue|RUE|Boulevard|BOULEVARD|boulevard|Impasse|IMPASSE|impasse|Allée|ALLEE|allée|hameau|Hameau|HAMEAU|Chemin|chemin|CHEMIN|lieu-dit|Lieu-dit|LIEU-DIT|lieu-Dit|Lieu-Dit)[- ][A-Za-zéèàâêŷûîôäëïöüÿùç]+([- ]?[A-Za-zéèàâêŷûîôäëïöüÿùç]{0,17}){0,3}$/;
 
 // 4) Le code postal correspondant au territoire français (métropole + DOM-TOM)
-regexPostal = /^[0-9]{5}|[9]{1}[7]{1}[1-6]{1}$/;
+regexPostal = /^((0[1-9]|[1-8][0-9]|9[0-5])[0-9]{3})|97[1-6]$/;
 
 // 5) La première regexName fonctionne très bien pour le nom de la ville.
-regexCity = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç]{0,17}$/;
+regexCity = /^[A-Za-zéèàâêŷûîôäëïöüÿùç]+([- ]?[A-Za-zéèàâêŷûîôäëïöüÿùç]{0,17}){0,10}$/;
 
 Pour le login/identifiant :
 // Sur la base de la regexName, on rajoute l'utilisation des chiffres et des caractères spéciaux. Simplement on limite la taille à 2 fois 15 caractères max.
@@ -82,3 +86,21 @@ regexCB = /^(?:[0-9]{12}|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][
 
 // 2) Le code de sécurité au verso (si nécessaire, selon la carte).
 regexCryptoCB = /^[0-9]{3}$/;
+
+Pour l'URL :
+
+regexURL =  /^http(s)?:\/\/((\d+\.\d+\.\d+\.\d+)|(([\w-]+\.)+([a-z,A-Z][\w-]*)))(:[1-9][0-9]*)?(\/([\w-.\/:%+@&=]+[\w- .\/?:%+@&=]*)?)?(#(.*))?$/i/ ;
+
+ou
+
+/^(https?://(?:www.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^\s]{2,}|www.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^\s]{2,}|https?://(?:www.|(?!www))[a-zA-Z0-9]+.[^\s]{2,}|www.[a-zA-Z0-9]+.[^\s]{2,})$/;
+
+Pour mettre l'ensemble des valeurs d'un tableau en regex :
+// Exemple pour un select qui demanderait de sélectionner son pays
+$country = implode('|',$countryCode); // $countryCode étant le nom du tableau
+            $regexCountry = "/^(".$country.")$/";
+            
+            
+Pour Pôle Emploi :
+        
+regexPE = /^[0-9]{8}|[0-9]{7}[A-Z]{1}|[0-9]{3}[ ][0-9]{3}[ ][0-9]{2}|[0-9]{3}[ ][0-9]{3}[ ][0-9]{1}[A-Z]{1}|[0-9]{12}|[0-9]{3}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{2}[A-Z]{1}|[0-9]{3}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{3}|[0-9]{11}[A-Z]{1}|[0-9]{12}$/;
