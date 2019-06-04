@@ -1,7 +1,7 @@
 Mémo regex
 
 Pour la civilité :
-        
+
 regexGender = /^(Monsieur|Madame|Autre)$/;
 
 Pour les nom :
@@ -71,7 +71,7 @@ regexCity = /^[A-Za-zéèàâêŷûîôäëïöüÿùç]+([- ]?[A-Za-zéèàâê
 Pour le login/identifiant :
 // Sur la base de la regexName, on rajoute l'utilisation des chiffres et des caractères spéciaux. Simplement on limite la taille à 2 fois 15 caractères max.
 
-regexLogin = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ0ç-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜ0ç-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/;
+regexLogin = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{2,15}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç0-9œ&~#{([|_\^@)°+=}$£*µ%!§.;,?<>]{0,15}$/;
 
 Pour un mot de passe secure :
 
@@ -89,7 +89,7 @@ regexCryptoCB = /^[0-9]{3}$/;
 
 Pour l'URL :
 
-regexURL =  /^http(s)?:\/\/((\d+\.\d+\.\d+\.\d+)|(([\w-]+\.)+([a-z,A-Z][\w-]*)))(:[1-9][0-9]*)?(\/([\w-.\/:%+@&=]+[\w- .\/?:%+@&=]*)?)?(#(.*))?$/i/ ;
+$regexURL = " #^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d]+-?)*[a-z\d]+)(?:\.(?:[a-z\d]+-?)*[a-z\d]+)*(?:\.[a-z]{2,6}))(?::\d+)?(?:[^\s]*)?$# ";
 
 ou
 
@@ -99,8 +99,14 @@ Pour mettre l'ensemble des valeurs d'un tableau en regex :
 // Exemple pour un select qui demanderait de sélectionner son pays
 $country = implode('|',$countryCode); // $countryCode étant le nom du tableau
             $regexCountry = "/^(".$country.")$/";
-            
-            
+
+
 Pour Pôle Emploi :
-        
+
 regexPE = /^[0-9]{8}|[0-9]{7}[A-Z]{1}|[0-9]{3}[ ][0-9]{3}[ ][0-9]{2}|[0-9]{3}[ ][0-9]{3}[ ][0-9]{1}[A-Z]{1}|[0-9]{12}|[0-9]{3}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{2}[A-Z]{1}|[0-9]{3}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{3}|[0-9]{11}[A-Z]{1}|[0-9]{12}$/;
+
+
+Pour l'âge :
+
+// De 16 à 123 ans
+regexAge = " /^1[6-9][ ]?(ans|ANS|Ans)?$|^[2-9][0-9][ ]?(ans|ANS|Ans)?$|^1[0-1][0-9][ ]?(ans|ANS|Ans)?$|^12[0-3]$/ ";
