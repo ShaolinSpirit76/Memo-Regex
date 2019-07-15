@@ -1,3 +1,17 @@
+// A mettre au début du php : permet de modifier toutes les dates en français
+// Il faudra appliquer la fonction à la date voulue
+
+/* Configure le script en français */
+setlocale (LC_TIME, 'fr_FR.UTF8','fra');
+//Définit le décalage horaire par défaut de toutes les fonctions date/heure  
+date_default_timezone_set("Europe/Paris");
+//Convertir une date US en françcais
+function dateFr($date){
+return strftime('%A %d %B %Y, %H:%M:%S',strtotime($date));
+}
+
+
+
 Mémo regex
 
 Pour la civilité :
@@ -9,7 +23,7 @@ Pour les nom :
 // 1) Si vous différienciez nom et prénom dans 2 input différents, cette régex conviendra parfaitement.
 // Elle accepte un nom simple ou composé, compris entre 2 et 17 caractère, reliés par un espace,
 // un tiret ou une apostrophe (pour les irlandais ;)
-regexName = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç']{2,17}[- ']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç]{0,17}$/;
+regexName = /^[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç\']{2,17}[- \']?[a-zA-ZéèÉÈôîêûÛÊÔÎùÙïöëüËÏÖÜç]{0,17}$/;
 
 // 2) Si vous voulez que l'on mette nom et prénom dans une seule input, il faudra utiliser cette regex.
 // Elle accepte les prénoms composés + particule + nom composé.
@@ -40,6 +54,10 @@ Pour les calendrier :
 
 // Prends en compte les années bisextiles.
 regexCalendar = ^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\g1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\g2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\g3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\g4(?:(?:1[6-9]|[2-9]\d)?\d{2})$
+
+Pour les heures :
+
+regexHour = ^([0-1][0-9]:[0-5][0-9]:[0-5][0-9])|(2[0-3]:[0-5][0-9]:[0-5][0-9])$/;
 
 
 Pour le numéro de téléphone, en indiquant le +33 dans votre label, remplaçant ainsi le premier 0 (numéro international) :
